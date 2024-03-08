@@ -55,11 +55,18 @@
             datatype: "json",
             data: JSON.stringify(product),
             success: function (response) {
-                LoadData();
-                ClearInputs();
-                $('.modal-title').text("Add New Product")
-                $('#modalForm').modal('hide')
-                $('.modal-backdrop').remove();
+                if (response == true) {
+                    LoadData();
+                    ClearInputs();
+                    $('.modal-title').text("Add New Product")
+                    $('#modalForm').modal('hide')
+                    $('.modal-backdrop').remove();
+                    $('#errorMessage').text("")
+                }
+                else {
+                    $('#errorMessage').text('Check all the fields and try again')
+                }
+                
             },
             error: function (errorMessage) {
                 alert (errorMessage.responseText)
@@ -208,6 +215,8 @@
                             <div class="mb-3">
                                 <input type="text" class="form-control" id="Supplier" placeholder="Supplier">
                             </div>
+                            <br />
+                            <p id="errorMessage"></p>
                         </form>
                     </div>
                     <div class="modal-footer">

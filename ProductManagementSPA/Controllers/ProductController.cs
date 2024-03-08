@@ -4,6 +4,7 @@ using PMDAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 
@@ -29,7 +30,7 @@ namespace ProductManagementSPA.Controllers
         public JsonResult AddProduct(Product product)
         {
             ProductService productService = new ProductService();
-            var products = productService.AddProduct(product);
+            var products = productService.AddProduct(product);            
             return Json(products, JsonRequestBehavior.AllowGet);
         }
         
